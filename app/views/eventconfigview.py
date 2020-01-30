@@ -47,8 +47,10 @@ class EventConfigView(QWidget):
         for vector in self.vector_manager.get_vectors(): 
             name_item = QStandardItem(vector.name)
             desc_item = QStandardItem(vector.description)
-            start_item = QStandardItem(vector.startdatetime.strftime("%H:%M:%S"))
-            end_item = QStandardItem(vector.enddatetime.strftime("%H:%M:%S"))
+            
+            time_format = "%m/%d/%Y, %H:%M:%S"
+            start_item = QStandardItem(vector.startdatetime.strftime(time_format))
+            end_item = QStandardItem(vector.enddatetime.strftime(time_format))
 
             model.appendRow([name_item, desc_item, start_item, end_item])
         self.ui.vector_tblview.setModel(model)
