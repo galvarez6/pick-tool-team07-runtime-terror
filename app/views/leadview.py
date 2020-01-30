@@ -1,12 +1,9 @@
-import os
-ui_dir = os.path.dirname(os.path.abspath(__file__))
+from .ui.uiobjects import Ui_ChooseLead
 
 from PyQt5 import uic
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QWidget
 
 from .eventconfigview import EventConfigView
-
-Ui_ChooseLead, _ = uic.loadUiType(ui_dir+r'/ui/PICK_LeadWidget.ui')
 
 class LeadView(QWidget): 
     def __init__(self, parent):

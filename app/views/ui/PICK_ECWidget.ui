@@ -57,6 +57,12 @@
       <property name="text">
        <string>Event Configuration</string>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
      </widget>
     </item>
     <item>

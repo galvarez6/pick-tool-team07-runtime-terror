@@ -1,18 +1,13 @@
 import sys
 sys.path.append("..") # This is to get VectorManager in scope
 
+from .ui.uiobjects import Ui_EventConfig, Ui_CreateVector
+
 from vectormanager import VectorManager
 
-import os
-ui_dir = os.path.dirname(os.path.abspath(__file__)) # This is to get environment(linux, windows, mac) path
-
-from PyQt5 import uic
-from PyQt5 import QtCore
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
-
-Ui_EventConfig,_ = uic.loadUiType(ui_dir+r'/ui/PICK_ECWidget.ui') 
-Ui_CreateVector, _ = uic.loadUiType(ui_dir+r'/ui/PICK_CreateVectorWidget.ui')
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QWidget, QDialog, QHeaderView
+from PyQt5.QtGui import QStandardItemModel, QStandardItem
 
 class VectorDialog(QDialog): 
     def __init__(self, vecmanager): 
@@ -20,7 +15,7 @@ class VectorDialog(QDialog):
         self.ui = Ui_CreateVector()
         self.ui.setupUi(self)
         self.ui.addvector_btn.clicked.connect(lambda: self.add_vector(vecmanager))
-        self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
+        self.setAttribute(Qt.WA_DeleteOnClose)
         self.exec()
 
     def add_vector(self, vecmanager): 
