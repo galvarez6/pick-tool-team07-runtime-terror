@@ -1,19 +1,28 @@
-from .ui.uiobjects import Ui_ChooseLead
+from .ui.uiobjects import Ui_TeamConfig
 
-from PyQt5 import uic
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QDialog
 
 from .eventconfigview import EventConfigView
 
-class LeadView(QWidget): 
+class LeadView(QDialog): 
     def __init__(self, parent):
         super(LeadView, self).__init__(parent)
+
         self.parent = parent
-        self.ui = Ui_ChooseLead()
+        self.ui = Ui_TeamConfig()
         self.ui.setupUi(self)
-        self.ui.submitBtn.clicked.connect(self.on_click)
-        parent.setCentralWidget(self)
+        self.setupHandlers()
+        self.exec_()
     
-    def on_click(self): 
-        if self.ui.yesRadioBtn.isChecked(): 
+    def connect(self): 
+        if self.ui.leadRadioBtn.isChecked(): 
+            self.done(0)
             ec = EventConfigView(self.parent)
+
+    def add_connection(self): 
+        # TODO: Open new dialog asking for the IP Address??
+        pass
+
+    def setupHandlers(self): 
+        self.ui.connBtn.clicked.connect(self.connect)
+        self.ui.addConnBtn.clicked.connect(self.add_connection)

@@ -16,12 +16,10 @@ class VectorManager:
             VectorManager()
         return VectorManager.__instance
 
-    def add_vector(self, name, desc, start, end): 
+    def add_vector(self, name, desc): 
         v = Vector()
         v.setName(name)
         v.setDescription(desc)
-        v.setStartDateTime(start)
-        v.setEndDateTime(end)
         self.vectors.append(v)
 
     def get_vectors(self): 

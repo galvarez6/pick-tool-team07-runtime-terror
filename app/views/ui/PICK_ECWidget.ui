@@ -6,90 +6,65 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>929</width>
-    <height>736</height>
+    <width>972</width>
+    <height>830</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="horizontalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>60</y>
-     <width>701</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QLabel" name="hddir_label">
-      <property name="text">
-       <string>Hard Drive Location</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="hdloc_textbox"/>
-    </item>
-    <item>
-     <widget class="QPushButton" name="browse_btn">
-      <property name="text">
-       <string>Browse</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>89</x>
-     <y>109</y>
-     <width>701</width>
-     <height>181</height>
+     <x>0</x>
+     <y>90</y>
+     <width>951</width>
+     <height>731</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Event Configuration</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="wordWrap">
-       <bool>false</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
          <string>Event Name</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="eventname_textbox"/>
+       <widget class="QLineEdit" name="eventNameTxtBox"/>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Event Description</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="eventDescTxtBox"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_5">
         <property name="text">
          <string>Start Date and Time</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QDateTimeEdit" name="start_dnt"/>
+       <widget class="QDateTimeEdit" name="startTime"/>
       </item>
       <item>
        <widget class="QLabel" name="label_4">
@@ -99,52 +74,39 @@
        </widget>
       </item>
       <item>
-       <widget class="QDateTimeEdit" name="end_dnt"/>
+       <widget class="QDateTimeEdit" name="endTime"/>
       </item>
      </layout>
     </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="verticalLayoutWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>89</x>
-     <y>309</y>
-     <width>701</width>
-     <height>321</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <widget class="QLabel" name="label_5">
-      <property name="text">
-       <string>Define Vectors</string>
+     <widget class="QPushButton" name="saveEvntBtn">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
       </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QTableView" name="vector_tblview"/>
-    </item>
-    <item>
-     <widget class="QPushButton" name="insertvector_btn">
       <property name="text">
-       <string>Add Vector</string>
+       <string>Save Event</string>
       </property>
      </widget>
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="submit_btn">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>700</x>
-     <y>650</y>
-     <width>89</width>
-     <height>25</height>
+     <x>80</x>
+     <y>10</y>
+     <width>761</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="text">
-    <string>Submit</string>
+    <string>Event Configuration</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>

@@ -10,9 +10,3 @@ class Vector(object):
 
     def setDescription(self, desc):
         self.description = desc
-
-    def setStartDateTime(self, datetime):
-        self.startdatetime = datetime
-
-    def setEndDateTime(self, datetime):
-        self.enddatetime = datetime 
