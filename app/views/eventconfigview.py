@@ -4,7 +4,7 @@ from vectormanager import VectorManager
 from eventconfigmanager import EventConfigManager
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget, QDialog, QHeaderView
+from PyQt5.QtWidgets import QDialog, QHeaderView
 
 from .ui.uiobjects import Ui_EventConfig
 

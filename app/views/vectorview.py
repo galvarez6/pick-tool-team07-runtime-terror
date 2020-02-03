@@ -9,6 +9,7 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 
 from .ui.uiobjects import Ui_VectorConfig
 from .vectordefview import VectorDefDialog
+from .dirconfigview import DirConfigView
 
 class VectorDialog(QDialog): 
     def __init__(self): 
@@ -56,4 +57,6 @@ class VectorDialog(QDialog):
 
     def submit(self): 
         # TODO: Next view after this one
-        pass
+        self.done(0)
+        DirConfigView()
+        

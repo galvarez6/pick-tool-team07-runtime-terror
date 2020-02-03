@@ -14,10 +14,10 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         # self.showMaximized()
-        self.ui.newproject_qaction.triggered.connect(self.lead_view)
+        self.ui.newProjectAction.triggered.connect(self.teamconfig)
 
-    def lead_view(self): 
-        lead_widget = TeamConfigView(self)
+    def teamconfig(self): 
+        TeamConfigView(self)
     
     def actionreport_view(self):
         pass
