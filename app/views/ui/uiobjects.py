@@ -17,4 +17,4 @@ Ui_EventConfig,_ = uic.loadUiType(ui_dir+r'/PICK_ECWidget.ui')
 Ui_CreateVector, _ = uic.loadUiType(ui_dir+r'/PICK_CreateVectorWidget.ui')
 
 # Directory Config View
-Ui_DirectoryConfig, _ = uic.loadUi(ui_dir+r'/PICK_DirectoryConfig.ui')
+Ui_DirectoryConfig, _ = uic.loadUiType(ui_dir+r'/PICK_DirectoryConfig.ui')

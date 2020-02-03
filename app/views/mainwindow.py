@@ -3,7 +3,7 @@ from .ui.uiobjects import Ui_MainWindow
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow
 
-from .leadview import LeadView
+from .teamconfigview import TeamConfigView
 
 # TODO: Make application responsive, where all UI elements positions
 # adapt to the size of the window
@@ -17,7 +17,7 @@ class MainWindow(QMainWindow):
         self.ui.newproject_qaction.triggered.connect(self.lead_view)
 
     def lead_view(self): 
-        lead_widget = LeadView(self)
+        lead_widget = TeamConfigView(self)
     
     def actionreport_view(self):
         pass
