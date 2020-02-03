@@ -17,9 +17,7 @@ class VectorManager:
         return VectorManager.__instance
 
     def add_vector(self, name, desc): 
-        v = Vector()
-        v.setName(name)
-        v.setDescription(desc)
+        v = Vector(name, desc)
         self.vectors.append(v)
 
     def get_vectors(self): 

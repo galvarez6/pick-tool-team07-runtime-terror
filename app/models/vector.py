@@ -7,3 +7,4 @@ class Vector(object):
     def addnode(self): 
         # TODO: Create Node class
         # self.nodes.append()
+        pass
