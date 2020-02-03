@@ -36,7 +36,7 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QTableView" name="tableView"/>
+       <widget class="QTableView" name="progressionTbl"/>
       </item>
       <item>
        <widget class="QScrollBar" name="verticalScrollBar">
@@ -70,7 +70,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="actionReportBtn">
         <property name="text">
          <string>View Action Report</string>
         </property>

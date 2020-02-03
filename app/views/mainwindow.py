@@ -9,7 +9,6 @@ from .logfileprocessingview import LogFileProcessingView
 # adapt to the size of the window
 
 class MainWindow(QMainWindow): 
-    PROJECT = False
     def __init__(self):
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
