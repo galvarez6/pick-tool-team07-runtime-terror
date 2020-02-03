@@ -28,7 +28,6 @@ class EventConfigView(QDialog):
         desc = self.ui.eventDescTxtBox.text()
         start = self.ui.startTime.dateTime().toPyDateTime()
         end = self.ui.endTime.dateTime().toPyDateTime()
-        print([start, end])
         EventConfigManager.get_instance().create_eventconfig(name, desc, start ,end)
         self.done(0)
-        VectorDialog()
+        VectorDialog(self.parent)

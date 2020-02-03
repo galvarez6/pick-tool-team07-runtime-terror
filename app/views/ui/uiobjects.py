@@ -21,3 +21,6 @@ Ui_DirectoryConfig, _ = uic.loadUiType(ui_dir+r'/PICK_DirectoryConfig.ui')
 # Vector Config View
 Ui_VectorConfig, _ = uic.loadUiType(ui_dir+r'/PICK_VectorConfig.ui')
 Ui_VectorDef, _ = uic.loadUiType(ui_dir+r'/PICK_VectorDefinition.ui')
+
+# Log file cleansing, validating and ingestion view
+Ui_LogFileProcessing, _ = uic.loadUiType(ui_dir+r'/PICK_LogFileProcessing.ui')

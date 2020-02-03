@@ -7,7 +7,6 @@ from .eventconfigview import EventConfigView
 class TeamConfigView(QDialog): 
     def __init__(self, parent):
         super(TeamConfigView, self).__init__(parent)
-
         self.parent = parent
         self.ui = Ui_TeamConfig()
         self.ui.setupUi(self)

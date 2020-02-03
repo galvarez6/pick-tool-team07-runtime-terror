@@ -12,8 +12,9 @@ from .vectordefview import VectorDefDialog
 from .dirconfigview import DirConfigView
 
 class VectorDialog(QDialog): 
-    def __init__(self): 
-        super(VectorDialog,self).__init__()
+    def __init__(self, parent): 
+        super(VectorDialog,self).__init__(parent)
+        self.parent = parent
         self.vecmanager = VectorManager.get_instance()
         self.ui = Ui_VectorConfig()
         self.ui.setupUi(self)
@@ -58,5 +59,5 @@ class VectorDialog(QDialog):
     def submit(self): 
         # TODO: Next view after this one
         self.done(0)
-        DirConfigView()
+        DirConfigView(self.parent)
         
