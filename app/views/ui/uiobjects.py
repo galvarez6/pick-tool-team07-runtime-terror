@@ -24,3 +24,6 @@ Ui_VectorDef, _ = uic.loadUiType(ui_dir+r'/PICK_VectorDefinition.ui')
 
 # Log file cleansing, validating and ingestion view
 Ui_LogFileProcessing, _ = uic.loadUiType(ui_dir+r'/PICK_LogFileProcessing.ui')
+
+# List/Graph view
+Ui_ListGraphConfig, _ = uic.loadUiType(ui_dir+r'/PICK_NodeConfigGraphView.ui')

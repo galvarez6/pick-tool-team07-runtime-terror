@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QMainWindow
 
 from .teamconfigview import TeamConfigView
 from .logfileprocessingview import LogFileProcessingView
+from .testGraphView import ListGraphView
 
 # TODO: Make application responsive, where all UI elements positions
 # adapt to the size of the window
@@ -14,6 +15,7 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         # self.showMaximized()
+        self.ui.nextView.clicked.connect(self.nextview)
         self.ui.newProjectAction.triggered.connect(self.teamconfig)
 
     def teamconfig(self): 
@@ -25,3 +27,6 @@ class MainWindow(QMainWindow):
     
     def actionreport_view(self):
         pass
+
+    def nextview(self):
+        ListGraphView(self)
