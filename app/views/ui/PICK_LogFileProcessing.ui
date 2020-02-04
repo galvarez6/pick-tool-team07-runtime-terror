@@ -36,23 +36,120 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QTableView" name="progressionTbl"/>
+       <widget class="QTableWidget" name="logfiletable">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <column>
+         <property name="text">
+          <string>FileName</string>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Source</string>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Cleansing Status</string>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Validation Status</string>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Ingestion Status</string>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Enforcement Action Report</string>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+           <stylestrategy>PreferDefault</stylestrategy>
+          </font>
+         </property>
+         <property name="textAlignment">
+          <set>AlignLeading|AlignVCenter</set>
+         </property>
+        </column>
+       </widget>
       </item>
       <item>
-       <widget class="QScrollBar" name="verticalScrollBar">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
+       <widget class="QTableWidget" name="eacTable">
+        <property name="enabled">
+         <bool>true</bool>
         </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>548</width>
+          <height>1600000</height>
+         </size>
+        </property>
+        <column>
+         <property name="text">
+          <string>FileName</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Line Number</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Error Message</string>
+         </property>
+        </column>
        </widget>
       </item>
      </layout>
-    </item>
-    <item>
-     <widget class="QProgressBar" name="progressBar">
-      <property name="value">
-       <number>24</number>
-      </property>
-     </widget>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -72,14 +169,14 @@
       <item>
        <widget class="QPushButton" name="actionReportBtn">
         <property name="text">
-         <string>View Action Report</string>
+         <string>Validate</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="pushButton">
         <property name="text">
-         <string>PushButton</string>
+         <string>Cancel</string>
         </property>
        </widget>
       </item>
