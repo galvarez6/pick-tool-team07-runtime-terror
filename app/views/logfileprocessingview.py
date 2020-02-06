@@ -7,6 +7,7 @@ from eventconfigmanager import EventConfigManager
 from .ui.uiobjects import Ui_LogFileProcessing
 
 from PyQt5 import QtWidgets
+from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import QWidget, QTableWidgetItem, QDialog
 
 class LogFileProcessingView(QWidget):
@@ -18,8 +19,8 @@ class LogFileProcessingView(QWidget):
         self.ui.setupUi(self)
         self.ui.logfiletable.setColumnCount(6)
         self.ui.logfiletable.setRowCount(50)
-        self.parent.setCentralWidget(self)
-        self.startProcess()
+        # self.parent.setCentralWidget(self)
+        # self.startProcess()
         self.ui.pushButton.clicked.connect(self.cancelClicked)
 
     def startProcess(self):
@@ -37,6 +38,7 @@ class LogFileProcessingView(QWidget):
                 self.ui.logfiletable.setItem(row, 0, info)
                 self.ui.logfiletable.setCellWidget(row, 5, checkBox)
                 row += 1
+        
 
     def cancelClicked(self):
         print("hello")
