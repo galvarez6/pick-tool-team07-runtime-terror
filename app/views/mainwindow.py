@@ -29,4 +29,5 @@ class MainWindow(QMainWindow):
         pass
 
     def nextview(self):
-        ListGraphView(self)
+        graph = ListGraphView(self)
+        self.setCentralWidget(graph)

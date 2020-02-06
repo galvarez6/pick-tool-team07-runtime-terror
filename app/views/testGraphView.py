@@ -1,7 +1,7 @@
 from .ui.uiobjects import Ui_ListGraphConfig
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QDialog, QFileDialog 
+from PyQt5.QtWidgets import QDialog, QFileDialog, QWidget 
 from PyQt5 import QtWidgets
 
 from QGraphViz.QGraphViz import QGraphViz
@@ -9,7 +9,7 @@ from QGraphViz.DotParser import Graph
 from QGraphViz.Engines import Dot
 
 
-class ListGraphView(QDialog):
+class ListGraphView(QWidget):
     def __init__(self, parent):
         super(ListGraphView, self).__init__(parent)
         self.parent = parent
@@ -19,7 +19,6 @@ class ListGraphView(QDialog):
         self.ui.tableWidget.setRowCount(50)
         self.setupGraph()
         self.addCheckBoxes()
-        self.exec_()
 
     def setupGraph(self): 
         graph = self.ui.graph
