@@ -270,7 +270,7 @@ p, li { white-space: pre-wrap; }
    <row/>
    <column>
     <property name="text">
-     <string>New Column</string>
+     <string>CheckBoxes</string>
     </property>
    </column>
    <column>
@@ -286,11 +286,6 @@ p, li { white-space: pre-wrap; }
    <column>
     <property name="text">
      <string>Node timestamp</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>New Column</string>
     </property>
    </column>
    <column>
@@ -320,6 +315,11 @@ p, li { white-space: pre-wrap; }
    </column>
    <column>
     <property name="text">
+     <string>Source</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
      <string>Node visibility</string>
     </property>
    </column>
@@ -340,58 +340,6 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>Nodes configuration in tabular format</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkBox">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>170</y>
-     <width>81</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkBox_2">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>170</y>
-     <width>81</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkBox_3">
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>170</y>
-     <width>81</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkBox_4">
-   <property name="geometry">
-    <rect>
-     <x>580</x>
-     <y>170</y>
-     <width>81</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
  </widget>
