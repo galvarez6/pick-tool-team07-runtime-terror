@@ -49,6 +49,7 @@ class MainWindow(QMainWindow):
         pass
 
     def nextview(self):
+        self.resize(1500, 1150)
         graph = ListGraphView(self)
         # self.takeCentralWidget()
         # self.hide()
