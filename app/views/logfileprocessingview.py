@@ -1,20 +1,18 @@
 import os
-
 import sys
+sys.path.append("..")
 
-from PyQt5 import QtWidgets
+from eventconfigmanager import EventConfigManager
 
 from .ui.uiobjects import Ui_LogFileProcessing
 
+from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QWidget, QTableWidgetItem, QDialog
-
-#import mainwindow
-
-root_dir = '/Users/joseg/Desktop/Spring2020/SW2/pick-tool-team07-runtime-terror/test/RootDir'
 
 class LogFileProcessingView(QWidget):
     def __init__(self, parent):
         super(LogFileProcessingView, self).__init__(parent) 
+        self.eventConfig = EventConfigManager.get_instance().getEventConfig()
         self.parent = parent
         self.ui = Ui_LogFileProcessing()
         self.ui.setupUi(self)
@@ -27,6 +25,7 @@ class LogFileProcessingView(QWidget):
     def startProcess(self):
         row = 0
         #root_dir will come from event config right?
+        root_dir = self.eventConfig.rootDir
         for dirName, subdirList, fileList in os.walk(root_dir, topdown=False):
             print('Found directory: %s' % dirName)
             for fname in fileList:

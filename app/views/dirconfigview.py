@@ -1,3 +1,7 @@
+import sys
+sys.path.append("..")
+from eventconfigmanager import EventConfigManager
+
 from .ui.uiobjects import Ui_DirectoryConfig
 
 from PyQt5.QtCore import Qt
@@ -21,5 +25,10 @@ class DirConfigView(QDialog):
         self.ui.rootDirTxtBox.setText(root_dir)
     
     def startIngestion(self):
+        rootDir = self.ui.rootDirTxtBox.text()
+        red = self.ui.redFolderTxtBox.text()
+        blue = self.ui.blueFolderTxtBox.text()
+        white = self.ui.whiteFolderTxtBox.text()
+        EventConfigManager.get_instance().setDirAttributes(rootDir, red, blue, white)
         self.parent.new_project()
         self.done(0) 
