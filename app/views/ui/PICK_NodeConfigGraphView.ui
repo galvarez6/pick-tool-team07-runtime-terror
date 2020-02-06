@@ -64,16 +64,6 @@
     <string>Timeline Orientation</string>
    </property>
   </widget>
-  <widget class="QListWidget" name="listWidget">
-   <property name="geometry">
-    <rect>
-     <x>680</x>
-     <y>130</y>
-     <width>671</width>
-     <height>601</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
@@ -95,58 +85,6 @@
      <width>191</width>
      <height>31</height>
     </rect>
-   </property>
-  </widget>
-  <widget class="Line" name="line">
-   <property name="geometry">
-    <rect>
-     <x>710</x>
-     <y>160</y>
-     <width>611</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
-  <widget class="Line" name="line_2">
-   <property name="geometry">
-    <rect>
-     <x>700</x>
-     <y>150</y>
-     <width>20</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Vertical</enum>
-   </property>
-  </widget>
-  <widget class="Line" name="line_3">
-   <property name="geometry">
-    <rect>
-     <x>1310</x>
-     <y>150</y>
-     <width>20</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Vertical</enum>
-   </property>
-  </widget>
-  <widget class="Line" name="line_4">
-   <property name="geometry">
-    <rect>
-     <x>1020</x>
-     <y>150</y>
-     <width>20</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Vertical</enum>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
@@ -341,6 +279,17 @@ p, li { white-space: pre-wrap; }
    <property name="text">
     <string>Nodes configuration in tabular format</string>
    </property>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>659</x>
+     <y>129</y>
+     <width>691</width>
+     <height>601</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="graph"/>
   </widget>
  </widget>
  <resources/>
