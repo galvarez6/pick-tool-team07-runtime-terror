@@ -1,7 +1,6 @@
 from .ui.uiobjects import Ui_MainWindow
 
-from PyQt5.QtCore import QSettings
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QMainWindow, QSizePolicy
 
 from .teamconfigview import TeamConfigView
 from .logfileprocessingview import LogFileProcessingView
@@ -15,16 +14,14 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        #   self.setFixedSize(self.ui.gridLayout.sizeHint())
+        # sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        # sizePolicy.setHorizontalStretch(0)
+        # sizePolicy.setVerticalStretch(0)
+        # sizePolicy.setHeightForWidth(self.sizePolicy().hasHeightForWidth())
+        # self.setSizePolicy(sizePolicy)
+        self.ui.gridLayout
         self.keyPressEvent = self.keyPress
-        # self.showMaximized()
-        # self.mainWindowViews = {
-        #     'processingview': LogFileProcessingView,
-        #     'graphview': ListGraphView 
-        # }
-
-        # for label in self.mainWindowViews: 
-        #     instance = self.mainWindowViews[label](self)
-        #     instance.hide()
         self.ui.nextView.clicked.connect(self.nextview)
         self.ui.newProjectAction.triggered.connect(self.teamconfig)
 
