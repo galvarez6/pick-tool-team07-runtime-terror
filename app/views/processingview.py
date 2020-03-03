@@ -5,3 +5,7 @@ class ProcessingView(QWidget):
     def __init__(self, parent=None): 
         super(QWidget, self).__init__(parent)
         self.initUI()
+
+    def initUI(self):
+        # TODO: LOG PROCESSING VIEW
+         
