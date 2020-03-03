@@ -37,8 +37,7 @@ class LogFileProcessingView(QWidget):
                 self.ui.logfiletable.setItem(row, 1, source)
                 self.ui.logfiletable.setItem(row, 0, info)
                 self.ui.logfiletable.setCellWidget(row, 5, checkBox)
-                row += 1
-        
+                row += 1      
 
     def cancelClicked(self):
         print("hello")

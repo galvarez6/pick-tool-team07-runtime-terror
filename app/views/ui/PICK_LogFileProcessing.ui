@@ -13,17 +13,30 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="verticalLayoutWidget">
+  <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
      <x>9</x>
      <y>9</y>
-     <width>1111</width>
+     <width>1101</width>
      <height>861</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="2" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QTableView" name="cleansingTable"/>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="2">
+     <widget class="QTableView" name="ingestingTable"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QTableView" name="validatingTable"/>
+    </item>
+    <item row="0" column="1">
      <widget class="QLabel" name="label">
       <property name="text">
        <string>Log File Processing</string>
@@ -33,150 +46,49 @@
       </property>
      </widget>
     </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QTableWidget" name="logfiletable">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <column>
-         <property name="text">
-          <string>FileName</string>
-         </property>
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Source</string>
-         </property>
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Cleansing Status</string>
-         </property>
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Validation Status</string>
-         </property>
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Ingestion Status</string>
-         </property>
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Enforcement Action Report</string>
-         </property>
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-           <stylestrategy>PreferDefault</stylestrategy>
-          </font>
-         </property>
-         <property name="textAlignment">
-          <set>AlignLeading|AlignVCenter</set>
-         </property>
-        </column>
-       </widget>
-      </item>
-      <item>
-       <widget class="QTableWidget" name="eacTable">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>548</width>
-          <height>1600000</height>
-         </size>
-        </property>
-        <column>
-         <property name="text">
-          <string>FileName</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Line Number</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Error Message</string>
-         </property>
-        </column>
-       </widget>
-      </item>
-     </layout>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Cleansing</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
     </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="actionReportBtn">
-        <property name="text">
-         <string>Validate</string>
-        </property>
-       </widget>
-      </item>
+    <item row="1" column="2">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Ingesting</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Validating</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QPushButton" name="pushButton">
         <property name="text">
-         <string>Cancel</string>
+         <string>Overwrite</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>Action Report</string>
         </property>
        </widget>
       </item>
