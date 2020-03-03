@@ -2,13 +2,9 @@ import sys
 sys.path.append("..")
 from eventconfigmanager import EventConfigManager
 
-from .ui.uiobjects import Ui_TeamConfig
-
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QDialog, QWidget, QListWidget, QStackedWidget, QTableView, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QRadioButton, QLineEdit, QDateTimeEdit
-from PyQt5.QtWidgets import QDialog, QWidget, QListWidget, QStackedWidget, QTableView, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, QRadioButton, QLineEdit
-
-from .eventconfigview import EventConfigView
+from PyQt5.QtWidgets import QDialog, QWidget, QListWidget, QStackedWidget, QTableView, QVBoxLayout,\
+                            QHBoxLayout, QLabel, QPushButton, QRadioButton, QLineEdit, QDateTimeEdit
 
 class ProjectConfigView(QDialog): 
     def __init__(self, parent):
@@ -16,7 +12,7 @@ class ProjectConfigView(QDialog):
         self.initUI()
 
     def initUI(self): 
-
+        self.resize(700,500)
         self.teamConfig = QWidget()
         self.dirConfig = QWidget()
         self.eventConfig = QWidget()
@@ -25,11 +21,13 @@ class ProjectConfigView(QDialog):
         self.teamConfigSetup()
         self.dirConfigSetup()
         self.eventConfigSetup()
+        self.vectorConfigSetup()
         
         self.stack = QStackedWidget(self)
         self.stack.addWidget(self.teamConfig)
         self.stack.addWidget(self.dirConfig)
         self.stack.addWidget(self.eventConfig)
+        self.stack.addWidget(self.vectorConfig)
 
 
         self.viewList = QListWidget()
@@ -92,75 +90,70 @@ class ProjectConfigView(QDialog):
         # Root directory controls
         rootDirLbl = QLabel("Root Directory")
         self.rootDirPath = QLineEdit()
+        self.rootDirPath.setReadOnly(True)
         self.rootDirBrowse = QPushButton()
         self.rootDirBrowse.setText("Browse")
         
 
         # Root Directory controls container
         rootDirContainer = QHBoxLayout()
-        rootDirContainer.addWidget(rootDirLbl)
         rootDirContainer.addWidget(self.rootDirPath)
         rootDirContainer.addWidget(self.rootDirBrowse)
 
         # Red Folder controls
         redFolderLbl = QLabel("Red Team Folder")
         self.redFolderPath = QLineEdit()
+        self.redFolderPath.setReadOnly(True)
         self.redFolderBrowse = QPushButton()
         self.redFolderBrowse.setText("Browse")
         self.redFolderBrowse.setEnabled(False)
 
         # Red folder controls container
         redContainer = QHBoxLayout()
-        redContainer.addWidget(redFolderLbl)
         redContainer.addWidget(self.redFolderPath)
         redContainer.addWidget(self.redFolderBrowse)
 
         # Blue Folder controls
         blueFolderLbl = QLabel("Blue Team Folder")
         self.blueFolderPath = QLineEdit()
+        self.blueFolderPath.setReadOnly(True)
         self.blueFolderBrowse = QPushButton()
         self.blueFolderBrowse.setText("Browse")
         self.blueFolderBrowse.setEnabled(False)
 
         # Blue folder controls container
         blueContainer = QHBoxLayout()
-        blueContainer.addWidget(blueFolderLbl)
         blueContainer.addWidget(self.blueFolderPath)
         blueContainer.addWidget(self.blueFolderBrowse)
 
         # Blue Folder controls
         whiteFolderLbl = QLabel("Blue Team Folder")
         self.whiteFolderPath = QLineEdit()
+        self.whiteFolderPath.setReadOnly(True)
         self.whiteFolderBrowse = QPushButton()
         self.whiteFolderBrowse.setText("Browse")
         self.whiteFolderBrowse.setEnabled(False)
 
         # Blue folder controls container
         whiteContainer = QHBoxLayout()
-        whiteContainer.addWidget(whiteFolderLbl)
         whiteContainer.addWidget(self.whiteFolderPath)
         whiteContainer.addWidget(self.whiteFolderBrowse)
 
         self.dirConfigSave = QPushButton("Save")
-        
 
         dirViewContainer = QVBoxLayout()
         dirViewContainer.addLayout(viewLabelCon)
+        dirViewContainer.addWidget(rootDirLbl)
         dirViewContainer.addLayout(rootDirContainer)
+        dirViewContainer.addWidget(redFolderLbl)
         dirViewContainer.addLayout(redContainer)
+        dirViewContainer.addWidget(blueFolderLbl)
         dirViewContainer.addLayout(blueContainer)
+        dirViewContainer.addWidget(whiteFolderLbl)
         dirViewContainer.addLayout(whiteContainer)
         dirViewContainer.addWidget(self.dirConfigSave)
 
         self.dirConfig.setLayout(dirViewContainer)
-
-    def connect(self): 
-        #TODO
-        pass
-        #self.eventConfigSetup()
-
-    def setupHandlers(self): 
-        self.ui.connBtn.clicked.connect(self.connect)
 
     def eventConfigSetup(self):
         self.viewLabel = QLabel()
@@ -200,5 +193,42 @@ class ProjectConfigView(QDialog):
 
         self.eventConfig.setLayout(self.eventConfigContainer)
 
+    def vectorConfigSetup(self): 
+        vectorLbl = QLabel("Vector Configuration")
 
+        self.vectorsTbl = QTableView()
+
+        self.delBtn = QPushButton()
+        self.delBtn.setText("Delete Vector")
+
+        self.editBtn = QPushButton()
+        self.editBtn.setText("Edit Vector")
+
+        self.addBtn = QPushButton()
+        self.addBtn.setText("Add Vector")
+
+        btnContainer = QHBoxLayout()
+        btnContainer.addWidget(self.delBtn)
+        btnContainer.addWidget(self.editBtn)
+        btnContainer.addWidget(self.addBtn)
+
+        self.submitBtn = QPushButton()
+        self.submitBtn.setText("Submit")
+
+        vectorConfigContainer = QVBoxLayout()
+        vectorConfigContainer.addWidget(vectorLbl)
+        vectorConfigContainer.addWidget(self.vectorsTbl)
+        vectorConfigContainer.addLayout(btnContainer)
+        vectorConfigContainer.addWidget(self.submitBtn)
+
+        self.vectorConfig.setLayout(vectorConfigContainer)
+        
+
+    def connect(self): 
+        #TODO
+        pass
+        #self.eventConfigSetup()
+
+    # def setupHandlers(self): 
+    #     self.ui.connBtn.clicked.connect(self.connect)
 
