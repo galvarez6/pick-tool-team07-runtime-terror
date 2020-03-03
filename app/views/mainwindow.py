@@ -2,7 +2,7 @@ from .ui.uiobjects import Ui_MainWindow
 
 from PyQt5.QtWidgets import QMainWindow,QWidget,QFrame, QGridLayout,QHBoxLayout,QVBoxLayout,QTableView,QTableWidget,QTabWidget,QListWidget,QLineEdit,QComboBox,QSpacerItem,QSizePolicy,QAction
 
-from .teamconfigview import TeamConfigView
+from .projectconfigview import ProjectConfigView
 from .logfileprocessingview import LogFileProcessingView
 from .testGraphView import ListGraphView
 
@@ -99,10 +99,11 @@ class MainWindow(QMainWindow):
             self.ui.newProjectAction.triggered.connect(self.teamconfig)
 
     def teamconfig(self):
-        TeamConfigView(self)
+        ProjectConfigView(self)
 
     def new_project(self): 
         print("New Project")
+        ProjectConfigView(self)
         # self.resize(1150,950)
         # process = LogFileProcessingView(self)
         # self.setCentralWidget(process)
