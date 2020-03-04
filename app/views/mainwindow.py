@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow, QAction
 
-from .projectconfigview import ProjectConfigView
+from .projectconfigdialog import ProjectConfigDialog
 from .analysisview import AnalysisView
 
 class MainWindow(QMainWindow): 
@@ -30,4 +30,4 @@ class MainWindow(QMainWindow):
 
     def new_project(self): 
         print("New Project")
-        ProjectConfigView(self)
+        ProjectConfigDialog(self)

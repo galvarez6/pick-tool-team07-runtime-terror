@@ -1,3 +1,6 @@
+import sys
+sys.path.append('..')
+
 from models.eventconfig import EventConfig
 
 class EventConfigManager: 

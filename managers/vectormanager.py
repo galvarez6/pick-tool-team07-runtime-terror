@@ -20,5 +20,16 @@ class VectorManager:
         v = Vector(name, desc)
         self.vectors.append(v)
 
+    def vector_exists(self, name): 
+        for vector in self.vectors: 
+            if vector.name == name: 
+                return True
+        return False
+
     def get_vectors(self): 
         return self.vectors
+
+    def update_vector(self, vector, name, desc): 
+        for vector in self.vectors: 
+            if vector.name == vector: 
+                vector.name, vector.description = name, desc
