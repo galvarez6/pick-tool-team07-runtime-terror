@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets
 
-from views.mainwindow import MainWindow   
+from app.views.mainwindow import MainWindow   
 
 if __name__ == '__main__': 
     import sys

@@ -46,5 +46,38 @@ class EventConfig(object):
     def setConnections(self, conn):
         self.connections = conn     
     
+    def getName(self):
+        return self.name 
+
+    def setDesc(self): 
+        return self.desc
+
+    def setStart(self): 
+        return self.start
+
+    def setEnd(self): 
+        return self.end
+
+    def setRootDir(self): 
+        return self.rootDir
+
+    def setRed(self):
+        return self.redFolder 
+
+    def setBlue(self): 
+        return self.blueFolder
+
+    def setWhite(self):
+        return self.whiteFolder
+
+    def setLead(self): 
+        return self.lead
+
+    def setLeadIp(self):
+        return self.leadIp
+
+    def setConnections(self, conn):
+        self.connections = conn     
+    
 
     
