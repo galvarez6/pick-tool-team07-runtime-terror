@@ -8,4 +8,4 @@ class ProcessingView(QWidget):
 
     def initUI(self):
         # TODO: LOG PROCESSING VIEW
-         
+ 

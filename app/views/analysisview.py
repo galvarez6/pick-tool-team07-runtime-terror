@@ -29,6 +29,7 @@ class AnalysisView(QWidget):
         # Filtering and search
         hSpacer = QSpacerItem(0, 0, QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.search = QLineEdit()
+        self.search.setFixedWidth(250)
         self.filterBox = QComboBox()
 
         # Container for tab/table controls 
