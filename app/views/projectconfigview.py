@@ -4,7 +4,7 @@ from eventconfigmanager import EventConfigManager
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QWidget, QListWidget, QStackedWidget, QTableView, QVBoxLayout,\
-                            QHBoxLayout, QLabel, QPushButton, QRadioButton, QLineEdit, QDateTimeEdit
+                            QHBoxLayout, QLabel, QPushButton, QRadioButton, QLineEdit, QDateTimeEdit, QFileDialog
 
 class ProjectConfigView(QDialog): 
     def __init__(self, parent):
@@ -93,6 +93,7 @@ class ProjectConfigView(QDialog):
         self.rootDirPath.setReadOnly(True)
         self.rootDirBrowse = QPushButton()
         self.rootDirBrowse.setText("Browse")
+        self.rootDirBrowse.clicked.connect(self.openDirectory)
         
 
         # Root Directory controls container
@@ -222,6 +223,13 @@ class ProjectConfigView(QDialog):
         vectorConfigContainer.addWidget(self.submitBtn)
 
         self.vectorConfig.setLayout(vectorConfigContainer)
+
+    def openDirectory(self):
+        root_dir = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
+        self.rootDirPath.setText(root_dir)
+        self.redFolderBrowse.setEnabled(True)
+        self.blueFolderBrowse.setEnabled(True)
+        self.whiteFolderBrowse.setEnabled(True)
         
 
     def connect(self): 
