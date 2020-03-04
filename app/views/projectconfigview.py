@@ -1,21 +1,13 @@
 import sys
 sys.path.append("..")
-from eventconfigmanager import EventConfigManager
+#from eventconfigmanager import EventConfigManager
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QWidget, QListWidget, QStackedWidget, QTableView, QVBoxLayout,\
-<<<<<<< HEAD
-                            QHBoxLayout, QLabel, QPushButton, QRadioButton, QLineEdit, QDateTimeEdit, QFileDialog
-
-class ProjectConfigView(QDialog): 
-    def __init__(self, parent):
-        super(ProjectConfigView, self).__init__(parent)
-=======
                             QHBoxLayout, QLabel, QPushButton, QRadioButton, QLineEdit, QDateTimeEdit
 class TeamConfigWidget(QWidget):
     def __init__(self, parent=None):
         super(TeamConfigWidget, self).__init__(parent)  
->>>>>>> 219f03aa3439c114fc45a552a2989be1ad6ca7b1
         self.initUI()
 
     def initUI(self):
@@ -77,7 +69,7 @@ class DirConfigWidget(QWidget):
         self.rootDirPath.setReadOnly(True)
         self.rootDirBrowse = QPushButton()
         self.rootDirBrowse.setText("Browse")
-        self.rootDirBrowse.clicked.connect(self.openDirectory)
+        #self.rootDirBrowse.clicked.connect(self.openDirectory)
         
         # Root Directory controls container
         rootDirContainer = QHBoxLayout()
@@ -216,16 +208,6 @@ class VectorConfigWidget(QWidget):
         vectorConfigContainer.addLayout(btnContainer)
         vectorConfigContainer.addWidget(self.submitBtn)
 
-<<<<<<< HEAD
-        self.vectorConfig.setLayout(vectorConfigContainer)
-
-    def openDirectory(self):
-        root_dir = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
-        self.rootDirPath.setText(root_dir)
-        self.redFolderBrowse.setEnabled(True)
-        self.blueFolderBrowse.setEnabled(True)
-        self.whiteFolderBrowse.setEnabled(True)
-=======
         self.setLayout(vectorConfigContainer)
 
 class ProjectConfigView(QDialog): 
@@ -239,7 +221,6 @@ class ProjectConfigView(QDialog):
         self.dirConfig = DirConfigWidget(self)
         self.eventConfig = EventConfigWidget(self)
         self.vectorConfig = VectorConfigWidget(self)
->>>>>>> 219f03aa3439c114fc45a552a2989be1ad6ca7b1
         
         self.stack = QStackedWidget(self)
         self.stack.addWidget(self.teamConfig)
