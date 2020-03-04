@@ -8,27 +8,23 @@ class EventConfigWidget(QWidget):
         self.initUI()
 
     def initUI(self): 
-        self.viewLabel = QLabel()
-        self.viewLabel.setText("Event Configuration")
+        self.viewLabel = QLabel("Event Configuration")
         self.viewLabel.setAlignment(Qt.AlignHCenter|Qt.AlignVCenter)
 
-        self.eventNameLbl = QLabel()
-        self.eventNameLbl.setText("Event Name")
+        self.eventNameLbl = QLabel("Event Name")
         self.eventName = QLineEdit()
 
-        self.eventDescriptionLbl = QLabel()
-        self.eventDescriptionLbl.setText("Event Description")
+        self.eventDescriptionLbl = QLabel("Event Description")
         self.eventDescription = QLineEdit()
 
-        self.startTimeLbl = QLabel()
-        self.startTimeLbl.setText("Start Date and Time")
+        self.startTimeLbl = QLabel("Start Date and Time")
         self.startTime = QDateTimeEdit()
 
-        self.endTimeLbl = QLabel()
-        self.endTimeLbl.setText("End Date and Time")
+        self.endTimeLbl = QLabel("End Date and Time")
         self.endTime = QDateTimeEdit()
 
         saveBtn = QPushButton("Save")
+        saveBtn.clicked.connect(self.save)
 
         eventConfigContainer = QVBoxLayout()
         eventConfigContainer.addWidget(self.viewLabel)
@@ -43,3 +39,6 @@ class EventConfigWidget(QWidget):
         eventConfigContainer.addWidget(saveBtn)
 
         self.setLayout(eventConfigContainer)
+
+    def save(self):
+        pass 

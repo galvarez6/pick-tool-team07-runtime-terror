@@ -1,6 +1,7 @@
 import sys
-sys.path.append("../../")
+sys.path.append("../..")
 from managers.eventconfigmanager import EventConfigManager
+
 from .dirconfigwidget import DirConfigWidget
 from .teamconfigwidget import TeamConfigWidget
 from .eventconfigwidget import EventConfigWidget
