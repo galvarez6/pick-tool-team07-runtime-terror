@@ -9,6 +9,7 @@ class MainWindow(QMainWindow):
         self.initUI()
 
     def initUI(self): 
+        self.setMinimumSize(500,500)
         self.showMaximized()
         self.setupMenuBar()
 
@@ -25,31 +26,8 @@ class MainWindow(QMainWindow):
         self.filemenu.addAction(self.newProject)
 
     def keyPress(self, e): 
-        from PyQt5 import QtCore
-        if e.key() == QtCore.Qt.Key_Escape:
-            self.ui = Ui_MainWindow()
-            self.ui.setupUi(self)
-            self.ui.nextView.clicked.connect(self.nextview)
-            self.ui.newProjectAction.triggered.connect(self.teamconfig)
-
-    def teamconfig(self):
-        ProjectConfigView(self)
+        pass
 
     def new_project(self): 
         print("New Project")
         ProjectConfigView(self)
-        # self.resize(1150,950)
-        # process = LogFileProcessingView(self)
-        # self.setCentralWidget(process)
-        # process.startProcess()
-    
-    def actionreport_view(self):
-        pass
-
-    def nextview(self):
-        self.resize(1500, 1150)
-        graph = ListGraphView(self)
-        # self.takeCentralWidget()
-        # self.hide()
-        # graph.show()
-        self.setCentralWidget(graph)

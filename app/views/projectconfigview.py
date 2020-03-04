@@ -5,46 +5,12 @@ from eventconfigmanager import EventConfigManager
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QWidget, QListWidget, QStackedWidget, QTableView, QVBoxLayout,\
                             QHBoxLayout, QLabel, QPushButton, QRadioButton, QLineEdit, QDateTimeEdit
-
-class ProjectConfigView(QDialog): 
-    def __init__(self, parent):
-        super(ProjectConfigView, self).__init__(parent)
+class TeamConfigWidget(QWidget):
+    def __init__(self, parent=None):
+        super(TeamConfigWidget, self).__init__(parent)  
         self.initUI()
 
-    def initUI(self): 
-        self.resize(700,500)
-        self.teamConfig = QWidget()
-        self.dirConfig = QWidget()
-        self.eventConfig = QWidget()
-        self.vectorConfig = QWidget()
-
-        self.teamConfigSetup()
-        self.dirConfigSetup()
-        self.eventConfigSetup()
-        self.vectorConfigSetup()
-        
-        self.stack = QStackedWidget(self)
-        self.stack.addWidget(self.teamConfig)
-        self.stack.addWidget(self.dirConfig)
-        self.stack.addWidget(self.eventConfig)
-        self.stack.addWidget(self.vectorConfig)
-
-
-        self.viewList = QListWidget()
-        self.viewList.insertItem(0, "Team Configuration")
-        self.viewList.insertItem(1, "Directory Configuration")
-        self.viewList.insertItem(2, "Event Configuration")
-        self.viewList.insertItem(3, "Vector Configuration")
-        self.viewList.currentRowChanged.connect(lambda i : self.stack.setCurrentIndex(i))
-
-        viewContainer = QHBoxLayout(self)
-        viewContainer.addWidget(self.viewList, 30)
-        viewContainer.addWidget(self.stack, 60)
-
-        self.setLayout(viewContainer)
-        self.exec_()
-    
-    def teamConfigSetup(self): 
+    def initUI(self):
         viewLabel = QLabel()
         viewLabel.setText("Team Configuration")
         viewLabel.setAlignment(Qt.AlignHCenter|Qt.AlignVCenter)
@@ -78,9 +44,19 @@ class ProjectConfigView(QDialog):
         teamViewContainer.addWidget(self.connectionsView)
         teamViewContainer.addWidget(self.connectBtn)
 
-        self.teamConfig.setLayout(teamViewContainer)
+        self.setLayout(teamViewContainer)
 
-    def dirConfigSetup(self): 
+    def connect(self): 
+        #TODO
+        pass
+
+
+class DirConfigWidget(QWidget):
+    def __init__(self, parent=None):  
+        super(DirConfigWidget, self).__init__(parent)
+        self.initUI()
+
+    def initUI(self): 
         viewLabel = QLabel()
         viewLabel.setText("Directory Configuration")
         viewLabel.setAlignment(Qt.AlignHCenter|Qt.AlignVCenter)
@@ -94,7 +70,6 @@ class ProjectConfigView(QDialog):
         self.rootDirBrowse = QPushButton()
         self.rootDirBrowse.setText("Browse")
         
-
         # Root Directory controls container
         rootDirContainer = QHBoxLayout()
         rootDirContainer.addWidget(self.rootDirPath)
@@ -153,9 +128,14 @@ class ProjectConfigView(QDialog):
         dirViewContainer.addLayout(whiteContainer)
         dirViewContainer.addWidget(self.dirConfigSave)
 
-        self.dirConfig.setLayout(dirViewContainer)
+        self.setLayout(dirViewContainer)
 
-    def eventConfigSetup(self):
+class EventConfigWidget(QWidget):
+    def __init__(self, parent=None): 
+        super(EventConfigWidget, self).__init__(parent) 
+        self.initUI()
+
+    def initUI(self): 
         self.viewLabel = QLabel()
         self.viewLabel.setText("Event Configuration")
         self.viewLabel.setAlignment(Qt.AlignHCenter|Qt.AlignVCenter)
@@ -179,21 +159,27 @@ class ProjectConfigView(QDialog):
         self.saveEventBtn = QPushButton()
         self.saveEventBtn.setText("Save Event") 
 
-        self.eventConfigContainer = QVBoxLayout()
-        self.eventConfigContainer.addWidget(self.viewLabel)
-        self.eventConfigContainer.addWidget(self.eventNameLbl)
-        self.eventConfigContainer.addWidget(self.eventName)
-        self.eventConfigContainer.addWidget(self.eventDescriptionLbl)
-        self.eventConfigContainer.addWidget(self.eventDescription)
-        self.eventConfigContainer.addWidget(self.startTimeLbl)
-        self.eventConfigContainer.addWidget(self.startTime)
-        self.eventConfigContainer.addWidget(self.endTimeLbl)
-        self.eventConfigContainer.addWidget(self.endTime)
-        self.eventConfigContainer.addWidget(self.saveEventBtn)
+        eventConfigContainer = QVBoxLayout()
+        eventConfigContainer.addWidget(self.viewLabel)
+        eventConfigContainer.addWidget(self.eventNameLbl)
+        eventConfigContainer.addWidget(self.eventName)
+        eventConfigContainer.addWidget(self.eventDescriptionLbl)
+        eventConfigContainer.addWidget(self.eventDescription)
+        eventConfigContainer.addWidget(self.startTimeLbl)
+        eventConfigContainer.addWidget(self.startTime)
+        eventConfigContainer.addWidget(self.endTimeLbl)
+        eventConfigContainer.addWidget(self.endTime)
+        eventConfigContainer.addWidget(self.saveEventBtn)
 
-        self.eventConfig.setLayout(self.eventConfigContainer)
+        self.setLayout(eventConfigContainer)
 
-    def vectorConfigSetup(self): 
+
+class VectorConfigWidget(QWidget):
+    def __init__(self, parent=None):
+        super(VectorConfigWidget, self).__init__(parent)  
+        self.initUI()
+
+    def initUI(self): 
         vectorLbl = QLabel("Vector Configuration")
 
         self.vectorsTbl = QTableView()
@@ -221,13 +207,40 @@ class ProjectConfigView(QDialog):
         vectorConfigContainer.addLayout(btnContainer)
         vectorConfigContainer.addWidget(self.submitBtn)
 
-        self.vectorConfig.setLayout(vectorConfigContainer)
-        
+        self.setLayout(vectorConfigContainer)
 
-    def connect(self): 
-        #TODO
-        pass
-        #self.eventConfigSetup()
+class ProjectConfigView(QDialog): 
+    def __init__(self, parent):
+        super(ProjectConfigView, self).__init__(parent)
+        self.initUI()
+
+    def initUI(self): 
+        self.resize(700,500)
+        self.teamConfig = TeamConfigWidget(self)
+        self.dirConfig = DirConfigWidget(self)
+        self.eventConfig = EventConfigWidget(self)
+        self.vectorConfig = VectorConfigWidget(self)
+        
+        self.stack = QStackedWidget(self)
+        self.stack.addWidget(self.teamConfig)
+        self.stack.addWidget(self.dirConfig)
+        self.stack.addWidget(self.eventConfig)
+        self.stack.addWidget(self.vectorConfig)
+
+
+        self.viewList = QListWidget()
+        self.viewList.insertItem(0, "Team Configuration")
+        self.viewList.insertItem(1, "Directory Configuration")
+        self.viewList.insertItem(2, "Event Configuration")
+        self.viewList.insertItem(3, "Vector Configuration")
+        self.viewList.currentRowChanged.connect(lambda i : self.stack.setCurrentIndex(i))
+
+        viewContainer = QHBoxLayout(self)
+        viewContainer.addWidget(self.viewList, 30)
+        viewContainer.addWidget(self.stack, 60)
+
+        self.setLayout(viewContainer)
+        self.exec_()
 
     # def setupHandlers(self): 
     #     self.ui.connBtn.clicked.connect(self.connect)
