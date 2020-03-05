@@ -74,6 +74,7 @@ class VectorConfigWidget(QWidget):
         self.updateTable()
 
         delBtn = QPushButton("Delete Vector")
+        delBtn.clicked.connect(self.delete)
 
         editBtn = QPushButton("Edit Vector")
         editBtn.clicked.connect(self.edit)
@@ -105,7 +106,6 @@ class VectorConfigWidget(QWidget):
         self.setNewLayout(addWidget)
 
     def edit(self): 
-        # TODO: There is a bug on this process
         selected = self.vectorsTbl.selectionModel()
         if selected.hasSelection(): 
             indexes = selected.selectedIndexes()
@@ -117,10 +117,16 @@ class VectorConfigWidget(QWidget):
             self.setNewLayout(addWidget)
                 
     def delete(self): 
-        pass
+        selected = self.vectorsTbl.selectionModel()
+        if selected.hasSelection(): 
+            indexes = selected.selectedIndexes()
+            name = indexes[0].data()
+            self.vectorManager.delete_vector(name)
+            self.updateTable()
 
     def updateTable(self): 
         vectors = self.vectorManager.get_vectors()
+        self.model.removeRows(0, self.model.rowCount())
         
         for vector in vectors: 
             name = QStandardItem(vector.name)

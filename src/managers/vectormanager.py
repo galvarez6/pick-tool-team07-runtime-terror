@@ -34,3 +34,10 @@ class VectorManager:
             if vector.getName() == vector_name: 
                 vector.setName(name)
                 vector.setDesc(desc)
+
+    def delete_vector(self, name):
+        if self.vector_exists(name): 
+            for vector in self.vectors: 
+                if vector.getName() == name: 
+                    self.vectors.remove(vector) 
+                    del vector
