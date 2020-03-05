@@ -20,8 +20,8 @@ class MainWindow(QMainWindow):
         self.showMaximized()
         self.setupMenuBar()
 
-        self.analysisView = AnalysisView()
-        self.processingView = ProcessingView()
+        self.analysisView = AnalysisView(self)
+        self.processingView = ProcessingView(self)
         self.view = VIEW.ANALYSIS
         self.setCentralWidget(self.analysisView)
 
@@ -46,4 +46,5 @@ class MainWindow(QMainWindow):
             self.setCentralWidget(self.processingView)
         elif self.view == VIEW.PROCESSING: 
             self.view = VIEW.ANALYSIS
+            self.analysisView.updateVectorList()
             self.setCentralWidget(self.analysisView)

@@ -2,11 +2,13 @@ from PyQt5.QtCore import Qt
 
 import os
 from PyQt5.QtWidgets import QWidget, QLabel,QCheckBox,QFrame, QGridLayout, QHBoxLayout, QVBoxLayout, QTableView,\
-                            QTableWidget, QAbstractScrollArea,  QHeaderView, QMainWindow, QTableWidgetItem, QTabWidget, QListWidget, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QAction
+                            QTableWidget, QAbstractScrollArea,  QHeaderView, QMainWindow, QTableWidgetItem, QTabWidget, QListWidget, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QAction,\
+                            QPushButton
 
 class ProcessingView(QWidget):
     def __init__(self, parent=None):
         super(QWidget, self).__init__(parent)
+        self.parent = parent
         self.title = "Log Processing"
         self.top = 100
         self.left = 100
@@ -26,8 +28,12 @@ class ProcessingView(QWidget):
         row = self.tableWidget.rowCount()
         self.tableWidget.insertRow(row)
 
+        start = QPushButton("Start Analysis")
+        start.clicked.connect(self.update)
+
         self.vBoxLayout = QVBoxLayout()
         self.vBoxLayout.addWidget(self.tableWidget)
+        self.vBoxLayout.addWidget(start)
         self.setLayout(self.vBoxLayout)
 
     def startProcess(self):
@@ -64,3 +70,6 @@ class ProcessingView(QWidget):
                     self.tableWidget.takeItem(y, 4)
                     y += 1
                 row += 1
+
+    def update(self): 
+        self.parent.updateView()
