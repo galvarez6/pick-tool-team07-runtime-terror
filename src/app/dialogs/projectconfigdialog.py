@@ -1,14 +1,15 @@
 import sys
 sys.path.append("../..")
-from managers.eventconfigmanager import EventConfigManager
-
-from .dirconfigwidget import DirConfigWidget
-from .teamconfigwidget import TeamConfigWidget
-from .eventconfigwidget import EventConfigWidget
-from .vectorconfigwidget import VectorConfigWidget
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QListWidget, QStackedWidget, QVBoxLayout, QHBoxLayout, QPushButton, QSpacerItem, QSizePolicy
+
+from managers.eventconfigmanager import EventConfigManager
+
+from app.widgets.dirconfigwidget import DirConfigWidget
+from app.widgets.teamconfigwidget import TeamConfigWidget
+from app.widgets.eventconfigwidget import EventConfigWidget
+from app.widgets.vectorconfigwidget import VectorConfigWidget
 
 class ProjectConfigDialog(QDialog): 
     def __init__(self, parent):

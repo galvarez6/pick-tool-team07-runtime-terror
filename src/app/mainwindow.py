@@ -1,7 +1,8 @@
 from PyQt5.QtWidgets import QMainWindow, QAction
 
-from .projectconfigdialog import ProjectConfigDialog
-from .analysisview import AnalysisView
+from app.views.analysisview import AnalysisView
+from app.views.processingview import ProcessingView
+from app.dialogs.projectconfigdialog import ProjectConfigDialog
 
 class MainWindow(QMainWindow): 
     def __init__(self):
@@ -28,6 +29,5 @@ class MainWindow(QMainWindow):
     def keyPress(self, e): 
         pass
 
-    def new_project(self): 
-        print("New Project")
+    def new_project(self):
         ProjectConfigDialog(self)
