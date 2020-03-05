@@ -14,7 +14,8 @@ from app.widgets.vectorconfigwidget import VectorConfigWidget
 class ProjectConfigDialog(QDialog): 
     def __init__(self, parent):
         super(ProjectConfigDialog, self).__init__(parent)
-        self.eventConfigManager = EventConfigManager()
+        self.eventConfigManager = EventConfigManager.get_instance()
+        self.parent = parent
         self.initUI()
 
     def initUI(self): 
@@ -38,6 +39,7 @@ class ProjectConfigDialog(QDialog):
         self.viewList.currentRowChanged.connect(lambda i : self.stack.setCurrentIndex(i))
 
         self.startNewProject = QPushButton("Start New Project")
+        self.startNewProject.clicked.connect(self.start)
         hSpacer = QSpacerItem(0, 0, QSizePolicy.Expanding, QSizePolicy.Fixed)
 
         newProjectControlContainer = QHBoxLayout()
@@ -53,5 +55,10 @@ class ProjectConfigDialog(QDialog):
         mainContainer.addLayout(newProjectControlContainer)
 
         self.setLayout(mainContainer)
-        self.exec_()
+        self.show()
+
+    def start(self):
+        # TODO: Verify that all configuration is correctly setup
+        self.parent.updateView()
+        self.done(0)
 
