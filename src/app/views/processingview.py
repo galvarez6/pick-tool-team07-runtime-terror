@@ -1,7 +1,8 @@
 from PyQt5.QtCore import Qt
+
 import os
 from PyQt5.QtWidgets import QWidget, QLabel,QCheckBox,QFrame, QGridLayout, QHBoxLayout, QVBoxLayout, QTableView,\
-                            QTableWidget, QMainWindow, QTableWidgetItem, QTabWidget, QListWidget, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QAction
+                            QTableWidget, QAbstractScrollArea,  QHeaderView, QMainWindow, QTableWidgetItem, QTabWidget, QListWidget, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QAction
 
 class ProcessingView(QWidget):
     def __init__(self, parent=None):
@@ -17,20 +18,13 @@ class ProcessingView(QWidget):
         # TODO: LOG PROCESSING VIEW
         self.setWindowTitle(self.title)
         self.setGeometry(self.top, self.left, self.width, self.height)
-
-        viewLabel = QLabel()
-        viewLabel.setText("Log Processing")
-        viewLabel.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
         self.resize(700, 500)
         self.tableWidget = QTableWidget()
         self.tableWidget.setColumnCount(6)
-        self.tableWidget.setRowCount(50)
-        self.tableWidget.setItem(0, 0, QTableWidgetItem("File Name"))
-        self.tableWidget.setItem(0, 1, QTableWidgetItem("Source"))
-        self.tableWidget.setItem(0, 2, QTableWidgetItem("Validation"))
-        self.tableWidget.setItem(0, 3, QTableWidgetItem("Cleansing"))
-        self.tableWidget.setItem(0, 4, QTableWidgetItem("Ingestion"))
-        self.tableWidget.setItem(0, 5, QTableWidgetItem("Select"))
+        self.tableWidget.setHorizontalHeaderLabels(['File Name', 'Source', 'Validation', 'Cleansing','Ingestion','Selection']) #set headers
+        self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch) #resize columns to fit into the widget
+        row = self.tableWidget.rowCount()
+        self.tableWidget.insertRow(row)
 
         self.vBoxLayout = QVBoxLayout()
         self.vBoxLayout.addWidget(self.tableWidget)
@@ -44,6 +38,7 @@ class ProcessingView(QWidget):
             print('Found directory: %s' % dirName)
             for fname in fileList:
                 print('\t%s' % fname)
+                print ()
                 # x = 10
                 info = QTableWidgetItem(fname)
                 vName = QTableWidgetItem(fname)
