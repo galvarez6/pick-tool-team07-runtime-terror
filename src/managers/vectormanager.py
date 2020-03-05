@@ -22,14 +22,15 @@ class VectorManager:
 
     def vector_exists(self, name): 
         for vector in self.vectors: 
-            if vector.name == name: 
+            if vector.getName() == name: 
                 return True
         return False
 
     def get_vectors(self): 
         return self.vectors
 
-    def update_vector(self, vector, name, desc): 
+    def update_vector(self, vector_name, name, desc): 
         for vector in self.vectors: 
-            if vector.name == vector: 
-                vector.name, vector.description = name, desc
+            if vector.getName() == vector_name: 
+                vector.setName(name)
+                vector.setDesc(desc)

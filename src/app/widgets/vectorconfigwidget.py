@@ -43,23 +43,16 @@ class AddWidget(QWidget):
         self.setLayout(container)
 
     def add_submit(self, name, desc, init_name=None, init_desc=None):
-        print("submit click")
         vec_name = name.text()
         vec_desc = desc.toPlainText()
 
-        if init_name != vec_name or init_desc != vec_desc: 
-            # if the initial name and initial desc are the same, then there is nothing to do
-            self.parent.initUI()
-        else:
-            if init_name and init_desc: 
-                if self.vectormanager.vector_exists(init_name):
-                    vector = self.vectormanager.update_vector(init_name, vec_name, vec_desc)
-                    self.parent.initUI()
-            else: 
-                self.vectormanager.add_vector(
+        if init_name == None or init_desc == None: 
+            self.vectormanager.add_vector(
                     vec_name, 
                     vec_desc)
-                self.parent.initUI()
+        else:
+            if self.vectormanager.vector_exists(init_name):
+                self.vectormanager.update_vector(init_name, vec_name, vec_desc)
 
         self.parent.initUI()
 
@@ -128,6 +121,7 @@ class VectorConfigWidget(QWidget):
 
     def updateTable(self): 
         vectors = self.vectorManager.get_vectors()
+        
         for vector in vectors: 
             name = QStandardItem(vector.name)
             desc = QStandardItem(vector.description)
