@@ -1,7 +1,14 @@
 from PyQt5.QtWidgets import QMainWindow, QAction
 
-from .projectconfigdialog import ProjectConfigDialog
-from .analysisview import AnalysisView
+from app.views.analysisview import AnalysisView
+from app.views.processingview import ProcessingView
+from app.dialogs.projectconfigdialog import ProjectConfigDialog
+
+from enum import Enum
+
+class VIEW(Enum): 
+    ANALYSIS = 0x1
+    PROCESSING = 0x2
 
 class MainWindow(QMainWindow): 
     def __init__(self):
@@ -14,6 +21,8 @@ class MainWindow(QMainWindow):
         self.setupMenuBar()
 
         self.analysisView = AnalysisView()
+        self.processingView = ProcessingView()
+        self.view = VIEW.ANALYSIS
         self.setCentralWidget(self.analysisView)
 
     def setupMenuBar(self): 
@@ -28,6 +37,13 @@ class MainWindow(QMainWindow):
     def keyPress(self, e): 
         pass
 
-    def new_project(self): 
-        print("New Project")
+    def new_project(self):
         ProjectConfigDialog(self)
+
+    def updateView(self): 
+        if self.view == VIEW.ANALYSIS: 
+            self.view = VIEW.PROCESSING
+            self.setCentralWidget(self.processingView)
+        elif self.view == VIEW.PROCESSING: 
+            self.view = VIEW.ANALYSIS
+            self.setCentralWidget(self.analysisView)

@@ -41,4 +41,9 @@ class EventConfigWidget(QWidget):
         self.setLayout(eventConfigContainer)
 
     def save(self):
-        pass 
+        self.eventConfigManager.setEventAttributes(
+            self.eventName.text(), 
+            self.eventDescription.text(), 
+            self.startTime.dateTime().toPyDateTime(), 
+            self.endTime.dateTime().toPyDateTime()
+        )

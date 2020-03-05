@@ -100,7 +100,8 @@ class DirConfigWidget(QWidget):
             self.rootDirPath.text(),
             self.redFolderPath.text(),
             self.blueFolderPath.text(),
-            self.whiteFolderPath.text())
+            self.whiteFolderPath.text()
+        )
 
     def enableBtns(self):
         self.redFolderBrowse.setEnabled(True)
