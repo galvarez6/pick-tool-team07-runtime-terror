@@ -1,6 +1,10 @@
 from PyQt5.QtWidgets import QWidget, QFrame, QGridLayout, QHBoxLayout, QVBoxLayout, QTableView,\
                             QTableWidget, QTabWidget, QListWidget, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QAction
 
+from QGraphViz.QGraphViz import QGraphViz
+from QGraphViz.DotParser import Graph
+from QGraphViz.Engines import Dot
+
 class AnalysisView(QWidget): 
     def __init__(self, parent=None): 
         super(QWidget, self).__init__(parent)
@@ -17,7 +21,7 @@ class AnalysisView(QWidget):
 
         self.tabWidget = QTabWidget()
         self.tabWidget.addTab(self.logEntriesTbl, "Log Entries")
-        self.tabWidget.addTab(self.vectorFrame, "Vector View")
+        self.tabWidget.addTab(self.vectorTab, "Vector View")
 
         # Defined Vectors list
         self.vectorWidget = QListWidget()
@@ -44,8 +48,17 @@ class AnalysisView(QWidget):
         self.mainLayout.addLayout(self.workspace)
 
     def setupVectorTab(self): 
-        self.graph = QVBoxLayout()
-        self.nodes = QTableWidget()
+        self.graph = QWidget()
+        self.graph.setLayout(QVBoxLayout())
+        self.setupGraph()
+        self.nodes = QTableView()
+
+        self.vectorViews = QHBoxLayout()
+        self.vectorViews.addWidget(self.nodes, 30)
+        self.vectorViews.addWidget(self.graph, 70)
+
+        # self.vwidget = QWidget()
+        # self.vwidget.setLayout(self.vectorViews)
 
         hSpacer = QSpacerItem(0, 0, QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.orientationCb = QComboBox()
@@ -59,13 +72,33 @@ class AnalysisView(QWidget):
         self.graphContols.addWidget(self.unitsCb)
         self.graphContols.addWidget(self.interval)
 
-        self.vectorViews = QHBoxLayout()
-        self.vectorViews.addLayout(self.graph)
-        self.vectorViews.addWidget(self.nodes)
-
         self.container = QVBoxLayout()
         self.container.addLayout(self.graphContols)
         self.container.addLayout(self.vectorViews)
 
-        self.vectorFrame = QFrame()
-        self.vectorFrame.setLayout(self.container)
+        self.vectorTab = QWidget()
+        self.vectorTab.setLayout(self.container)
+
+    def setupGraph(self): 
+        graph = self.graph
+        qgv = QGraphViz()
+
+        qgv.new(Dot(Graph("Main_Graph")))
+
+        n1 = qgv.addNode(qgv.engine.graph, "Node1", label="N1")
+        n2 = qgv.addNode(qgv.engine.graph, "Node2", label="N2")
+        n3 = qgv.addNode(qgv.engine.graph, "Node3", label="N3")
+        n4 = qgv.addNode(qgv.engine.graph, "Node4", label="N4")
+        n5 = qgv.addNode(qgv.engine.graph, "Node5", label="N5")
+        n6 = qgv.addNode(qgv.engine.graph, "Node6", label="N6")
+
+        qgv.addEdge(n1, n2, {})
+        qgv.addEdge(n3, n2, {})
+        qgv.addEdge(n2, n4, {"width":2})
+        qgv.addEdge(n4, n5, {"width":4})
+        qgv.addEdge(n4, n6, {"width":5,"color":"red"})
+        qgv.addEdge(n3, n6, {"width":2})
+
+        qgv.build()
+        qgv.save("test.gv")
+        graph.layout().addWidget(qgv)
