@@ -5,6 +5,9 @@ from PyQt5.QtWidgets import QWidget, QLabel,QCheckBox,QFrame, QGridLayout, QHBox
                             QTableWidget, QAbstractScrollArea,  QHeaderView, QMainWindow, QTableWidgetItem, QTabWidget, QListWidget, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QAction,\
                             QPushButton
 
+# TODO: This view is missing buttons and also should we change it, so that we make a tab view and we can set the 
+# ActionReport view there? 
+
 class ProcessingView(QWidget):
     def __init__(self, parent=None):
         super(QWidget, self).__init__(parent)
@@ -17,7 +20,6 @@ class ProcessingView(QWidget):
         self.initUI()
 
     def initUI(self):
-        # TODO: LOG PROCESSING VIEW
         self.setWindowTitle(self.title)
         self.setGeometry(self.top, self.left, self.width, self.height)
         self.resize(700, 500)
@@ -37,6 +39,8 @@ class ProcessingView(QWidget):
         self.setLayout(self.vBoxLayout)
 
     def startProcess(self):
+        # TODO: Needs to be updated once we have a SplunkInterface to communicate with splunk
+        # Also we need to add a CleansingProcess or CleansingManager? 
         row = 0
         # root_dir will come from event config right?
         #root_dir = self.
@@ -71,5 +75,6 @@ class ProcessingView(QWidget):
                     y += 1
                 row += 1
 
+    # this will probably be removed once we update the MainWindow view structure
     def update(self): 
         self.parent.updateView()

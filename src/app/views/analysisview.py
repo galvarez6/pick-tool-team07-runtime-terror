@@ -85,6 +85,7 @@ class AnalysisView(QWidget):
         self.vectorTab.setLayout(self.container)
 
     def setupGraph(self): 
+        # TODO: Dynamically make graph, add a add, edit, and remove node buttons. 
         graph = self.graph
         qgv = QGraphViz(node_invoked_callback=self.nodeInvoked)
 
@@ -112,6 +113,7 @@ class AnalysisView(QWidget):
         d = QDialog(self)
         d.show()
 
+    # TODO: Figure out why this breaks and does not update the list view. 
     def updateVectorList(self):
         vectors = self.vectorManager.get_vectors()
         for vector in vectors: 
