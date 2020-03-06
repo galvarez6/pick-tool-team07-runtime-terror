@@ -1,11 +1,17 @@
 from PyQt5.QtCore import Qt
+
 import os
 from PyQt5.QtWidgets import QWidget, QLabel,QCheckBox,QFrame, QGridLayout, QHBoxLayout, QVBoxLayout, QTableView,\
-                            QTableWidget, QMainWindow, QTableWidgetItem, QTabWidget, QListWidget, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QAction
+                            QTableWidget, QAbstractScrollArea,  QHeaderView, QMainWindow, QTableWidgetItem, QTabWidget, QListWidget, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QAction,\
+                            QPushButton
+
+# TODO: This view is missing buttons and also should we change it, so that we make a tab view and we can set the 
+# ActionReport view there? 
 
 class ProcessingView(QWidget):
     def __init__(self, parent=None):
         super(QWidget, self).__init__(parent)
+        self.parent = parent
         self.title = "Log Processing"
         self.top = 100
         self.left = 100
@@ -14,29 +20,27 @@ class ProcessingView(QWidget):
         self.initUI()
 
     def initUI(self):
-        # TODO: LOG PROCESSING VIEW
         self.setWindowTitle(self.title)
         self.setGeometry(self.top, self.left, self.width, self.height)
-
-        viewLabel = QLabel()
-        viewLabel.setText("Log Processing")
-        viewLabel.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
         self.resize(700, 500)
         self.tableWidget = QTableWidget()
         self.tableWidget.setColumnCount(6)
-        self.tableWidget.setRowCount(50)
-        self.tableWidget.setItem(0, 0, QTableWidgetItem("File Name"))
-        self.tableWidget.setItem(0, 1, QTableWidgetItem("Source"))
-        self.tableWidget.setItem(0, 2, QTableWidgetItem("Validation"))
-        self.tableWidget.setItem(0, 3, QTableWidgetItem("Cleansing"))
-        self.tableWidget.setItem(0, 4, QTableWidgetItem("Ingestion"))
-        self.tableWidget.setItem(0, 5, QTableWidgetItem("Select"))
+        self.tableWidget.setHorizontalHeaderLabels(['File Name', 'Source', 'Validation', 'Cleansing','Ingestion','Selection']) #set headers
+        self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch) #resize columns to fit into the widget
+        row = self.tableWidget.rowCount()
+        self.tableWidget.insertRow(row)
+
+        start = QPushButton("Start Analysis")
+        start.clicked.connect(self.update)
 
         self.vBoxLayout = QVBoxLayout()
         self.vBoxLayout.addWidget(self.tableWidget)
+        self.vBoxLayout.addWidget(start)
         self.setLayout(self.vBoxLayout)
 
     def startProcess(self):
+        # TODO: Needs to be updated once we have a SplunkInterface to communicate with splunk
+        # Also we need to add a CleansingProcess or CleansingManager? 
         row = 0
         # root_dir will come from event config right?
         #root_dir = self.
@@ -44,6 +48,7 @@ class ProcessingView(QWidget):
             print('Found directory: %s' % dirName)
             for fname in fileList:
                 print('\t%s' % fname)
+                print ()
                 # x = 10
                 info = QTableWidgetItem(fname)
                 vName = QTableWidgetItem(fname)
@@ -69,3 +74,7 @@ class ProcessingView(QWidget):
                     self.tableWidget.takeItem(y, 4)
                     y += 1
                 row += 1
+
+    # this will probably be removed once we update the MainWindow view structure
+    def update(self): 
+        self.parent.updateView()

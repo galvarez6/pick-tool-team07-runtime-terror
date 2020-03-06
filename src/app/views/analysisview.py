@@ -1,5 +1,9 @@
-from PyQt5.QtWidgets import QWidget, QFrame, QGridLayout, QHBoxLayout, QVBoxLayout, QTableView,\
-                            QTableWidget, QTabWidget, QListWidget, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QAction
+import sys
+sys.path.append("../..")
+from managers.vectormanager import VectorManager
+
+from PyQt5.QtWidgets import QWidget, QDialog,QFrame, QGridLayout, QHBoxLayout, QVBoxLayout, QTableView,\
+                            QTableWidget, QTabWidget, QListWidget, QListWidgetItem, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QAction
 
 from QGraphViz.QGraphViz import QGraphViz
 from QGraphViz.DotParser import Graph
@@ -8,6 +12,7 @@ from QGraphViz.Engines import Dot
 class AnalysisView(QWidget): 
     def __init__(self, parent=None): 
         super(QWidget, self).__init__(parent)
+        self.vectorManager = VectorManager.get_instance()
         self.initUI()
 
     def initUI(self): 
@@ -80,8 +85,9 @@ class AnalysisView(QWidget):
         self.vectorTab.setLayout(self.container)
 
     def setupGraph(self): 
+        # TODO: Dynamically make graph, add a add, edit, and remove node buttons. 
         graph = self.graph
-        qgv = QGraphViz()
+        qgv = QGraphViz(node_invoked_callback=self.nodeInvoked)
 
         qgv.new(Dot(Graph("Main_Graph")))
 
@@ -102,3 +108,15 @@ class AnalysisView(QWidget):
         qgv.build()
         qgv.save("test.gv")
         graph.layout().addWidget(qgv)
+
+    def nodeInvoked(self, node):
+        d = QDialog(self)
+        d.show()
+
+    # TODO: Figure out why this breaks and does not update the list view. 
+    def updateVectorList(self):
+        vectors = self.vectorManager.get_vectors()
+        for vector in vectors: 
+            item = QListWidgetItem(vector.getName())
+            self.vectorWidget.addItem(item)
+    
